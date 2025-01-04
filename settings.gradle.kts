@@ -21,4 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "SampleModularization"
 include(":app")
- 
+include(":core")
+include(":core:common")
