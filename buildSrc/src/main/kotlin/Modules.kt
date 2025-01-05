@@ -2,6 +2,8 @@ object Modules {
     const val ADD_NOTE_DOMAIN = ":feature:addnote:domain"
     const val ADD_NOTE_PRESENTATION = ":feature:addnote:presentation"
     const val STARWARS_LIST = ":feature:starwarslist"
+    const val DOMAIN = ":domain"
+    const val DATA = ":data"
     const val COMMON = ":core:common"
     const val DATABASE = ":core:database"
     const val DAO = ":core:database:dao"

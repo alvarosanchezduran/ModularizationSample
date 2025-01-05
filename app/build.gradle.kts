@@ -82,6 +82,8 @@ dependencies {
     //implementation(project(Modules.DAO))
     implementation(project(Modules.DI))
     implementation(project(Modules.STARWARS_LIST))
+    implementation(project(Modules.DOMAIN))
+    implementation(project(Modules.DATA))
     //implementation(project(Modules.ADD_NOTE_PRESENTATION))
     //implementation(project(Modules.NOTE_DATA))
     //implementation(project(Modules.NOTE_DOMAIN))

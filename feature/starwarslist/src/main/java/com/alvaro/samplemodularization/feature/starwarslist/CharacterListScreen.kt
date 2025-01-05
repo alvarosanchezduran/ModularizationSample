@@ -6,10 +6,15 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.alvaro.samplemodularization.core.common.components.BasicListItem
+import androidx.hilt.navigation.compose.hiltViewModel
+
 
 data class Person(
     val uid: String,
@@ -30,13 +35,32 @@ val exampleData = listOf(
 )
 
 @Composable
-fun CharacterListScreen(modifier: Modifier = Modifier) {
+fun CharacterListScreen(
+    modifier: Modifier = Modifier,
+    viewModel: CharacterListViewModel = hiltViewModel()
+) {
+
+    val characters by viewModel.characters.collectAsState()
+    val loading by viewModel.loading.collectAsState()
+    val error by viewModel.error.collectAsState()
+
     Scaffold(modifier = modifier) { paddingValues ->
         Surface(modifier = Modifier.padding(paddingValues)) {
+            if (loading) {
+                Text("Cargando...")
+                return@Surface
+            }
+            if (error != null) {
+                Text("Error: ${error}")
+            }
+            if(characters.isEmpty()) {
+                Text("No hay elementos")
+                return@Surface
+            }
             LazyColumn(
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                items(exampleData) {
+                items(characters) {
                     BasicListItem(name = it.name)
                 }
             }

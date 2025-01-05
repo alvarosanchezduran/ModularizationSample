@@ -32,4 +32,9 @@ dependencies {
 
     //Modules
     implementation(project(Modules.COMMON))
+    implementation(project(Modules.DOMAIN))
+
+    // Navigation
+    implementation(libs.navigation.ui.ktx)
+    implementation(libs.androidx.hilt.navigation.compose)
 }
