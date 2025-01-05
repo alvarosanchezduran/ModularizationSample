@@ -4,17 +4,20 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.Stable
 import androidx.navigation.compose.rememberNavController
+import com.alvaro.samplemodularization.core.di.navigation.Navigator
 import com.alvaro.samplemodularization.navigation.ModularizationAppNavHost
 
 @Stable
 @Composable
-fun ModularizationApp() {
+fun ModularizationApp(navigator: Navigator) {
     val navController = rememberNavController()
 
     DisposableEffect(key1 = navController) {
+        navigator.setController(navController)
         onDispose {
+            navigator.clear()
         }
     }
 
-    ModularizationAppNavHost(navController)
+    ModularizationAppNavHost(navController, navigator)
 }

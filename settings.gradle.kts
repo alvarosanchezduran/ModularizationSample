@@ -23,3 +23,6 @@ rootProject.name = "SampleModularization"
 include(":app")
 include(":core")
 include(":core:common")
+include(":feature")
+include(":feature:starwarslist")
+include(":core:di")

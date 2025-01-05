@@ -1,6 +1,7 @@
 package com.alvaro.samplemodularization.presentation
 
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
@@ -10,16 +11,22 @@ import androidx.compose.ui.Modifier
 
 @Composable
 fun AppScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    openCharactersListScreen: () -> Unit
 ) {
     Scaffold(modifier = modifier) { paddingValues ->
         Surface(modifier = Modifier.padding(paddingValues)) {
-            AppContent()
+            AppContent(openCharactersListScreen)
         }
     }
 }
 
 @Composable
-fun AppContent() {
-    Text(text = "Hello World")
+fun AppContent(openCharactersListScreen: () -> Unit) {
+    Button(onClick = {
+        openCharactersListScreen()
+    }) {
+        Text(text = "Character list")
+    }
+
 }

@@ -5,16 +5,27 @@ import androidx.compose.runtime.Stable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.alvaro.samplemodularization.core.di.navigation.AppScreenRoute
+import com.alvaro.samplemodularization.core.di.navigation.Navigator
+import com.alvaro.samplemodularization.core.di.navigation.StarWarsCharactersScreenRoute
+import com.alvaro.samplemodularization.feature.starwarslist.CharacterListScreen
 import com.alvaro.samplemodularization.presentation.AppScreen
 
 @Stable
 @Composable
 fun ModularizationAppNavHost(
-    navController: NavHostController
+    navController: NavHostController,
+    navigator: Navigator,
 ) {
-    NavHost(navController = navController, startDestination = "home") {
-        composable(route = "home") {
-            AppScreen()
+    NavHost(navController = navController, startDestination = AppScreenRoute.ROUTE) {
+        composable(route = AppScreenRoute.ROUTE) {
+            AppScreen(
+                openCharactersListScreen = { navigator.navigate(StarWarsCharactersScreenRoute) }
+            )
+        }
+
+        composable(route = StarWarsCharactersScreenRoute.ROUTE) {
+            CharacterListScreen()
         }
     }
 }

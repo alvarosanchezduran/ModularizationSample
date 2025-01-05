@@ -12,15 +12,23 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.alvaro.samplemodularization.app.ModularizationApp
+import com.alvaro.samplemodularization.core.di.navigation.Navigator
 import com.alvaro.samplemodularization.ui.theme.SampleModularizationTheme
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    @Inject
+    lateinit var navigator: Navigator
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             SampleModularizationTheme {
-                ModularizationApp()
+                ModularizationApp(navigator)
             }
         }
     }

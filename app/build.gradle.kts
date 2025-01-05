@@ -78,14 +78,15 @@ dependencies {
     kapt(libs.hilt.compiler)
 
     // Modules
-    /*implementation(project(Modules.DATABASE))
-    implementation(project(Modules.DAO))
+    //implementation(project(Modules.DATABASE))
+    //implementation(project(Modules.DAO))
     implementation(project(Modules.DI))
-    implementation(project(Modules.ADD_NOTE_PRESENTATION))
-    implementation(project(Modules.NOTE_DATA))
-    implementation(project(Modules.NOTE_DOMAIN))
-    implementation(project(Modules.NOTE_PRESENTATION))
-    implementation(project(Modules.NOTE_DETAIL_PRESENTATION))*/
+    implementation(project(Modules.STARWARS_LIST))
+    //implementation(project(Modules.ADD_NOTE_PRESENTATION))
+    //implementation(project(Modules.NOTE_DATA))
+    //implementation(project(Modules.NOTE_DOMAIN))
+    //implementation(project(Modules.NOTE_PRESENTATION))
+    //implementation(project(Modules.NOTE_DETAIL_PRESENTATION))
 
     // Navigation
     implementation(libs.navigation.ui.ktx)
