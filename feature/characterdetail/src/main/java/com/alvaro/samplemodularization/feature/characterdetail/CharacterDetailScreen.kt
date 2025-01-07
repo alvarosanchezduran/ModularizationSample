@@ -1,29 +1,27 @@
-package com.alvaro.samplemodularization.feature.starwarslist
+package com.alvaro.samplemodularization.feature.characterdetail
 
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
-import com.alvaro.samplemodularization.core.common.components.BasicListItem
 import androidx.hilt.navigation.compose.hiltViewModel
 
 @Composable
-fun CharacterListScreen(
+fun CharacterDetailScreen(
     modifier: Modifier = Modifier,
-    viewModel: CharacterListViewModel = hiltViewModel(),
-    openCharacterDetailScreen: (String) -> Unit
+    viewModel: CharacterDetailViewModel = hiltViewModel()
 ) {
 
-    val characters by viewModel.characters.collectAsState()
+    LaunchedEffect(Unit) {
+        viewModel.fetchCharacterDetail()
+    }
+
+    val character by viewModel.character.collectAsState()
     val loading by viewModel.loading.collectAsState()
     val error by viewModel.error.collectAsState()
 
@@ -36,19 +34,11 @@ fun CharacterListScreen(
             if (error != null) {
                 Text("Error: ${error}")
             }
-            if(characters.isEmpty()) {
+            if(character == null) {
                 Text("No hay elementos")
                 return@Surface
             }
-            LazyColumn(
-                verticalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
-                items(characters) {
-                    BasicListItem(name = it.name, Modifier.clickable {
-                        openCharacterDetailScreen(it.id)
-                    })
-                }
-            }
+            Text("${character?.name}")
         }
     }
 

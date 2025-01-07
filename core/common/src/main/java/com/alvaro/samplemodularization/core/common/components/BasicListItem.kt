@@ -10,11 +10,14 @@ import androidx.compose.ui.text.style.TextAlign
 
 
 @Composable
-fun BasicListItem(name: String) {
+fun BasicListItem(
+    name: String,
+    modifier: Modifier = Modifier
+) {
     Text(
         text = name,
         style = MaterialTheme.typography.bodyLarge,
-        modifier = Modifier.padding(vertical = 8.dp),
+        modifier = modifier.padding(vertical = 8.dp),
         textAlign = TextAlign.Start
     )
 }
