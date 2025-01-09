@@ -14,8 +14,8 @@ class CharactersRepositoryImpl @Inject constructor(
         return remoteDataSource.getCharacters().toDomain()
     }
 
-    override suspend fun getCharacterDetail(id: Int): CharacterDetail {
-        return remoteDataSource.getCharacters().toDomain()
+    override suspend fun getCharacterDetail(id: String): CharacterDetail {
+        return remoteDataSource.getCharacterDetail(id).toDomain()
     }
 
 }
