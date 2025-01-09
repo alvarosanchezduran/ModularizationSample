@@ -14,6 +14,21 @@ object StarWarsCharactersScreenRoute : NavigationRoute {
     const val ROUTE = ROOT
 }
 
+data class SampleFragmentXmlScreenRoute(val param: String) : NavigationRoute {
+    constructor(savedStateHandle: SavedStateHandle) : this(
+        param = requireNotNull(savedStateHandle.get<String>(inputArg))
+    )
+
+    override fun buildRoute(): String = "$root/$param"
+
+    companion object {
+        private const val root = "sample_fragment_screen"
+        private const val inputArg = "input"
+
+        const val route = "$root/{$inputArg}"
+    }
+}
+
 data class StarWarsCharacterDetailScreenRoute(val id: String) : NavigationRoute {
     constructor(savedStateHandle: SavedStateHandle) : this(
         id = requireNotNull(savedStateHandle.get<String>(inputArg))

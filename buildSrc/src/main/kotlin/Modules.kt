@@ -3,6 +3,7 @@ object Modules {
     const val ADD_NOTE_PRESENTATION = ":feature:addnote:presentation"
     const val STARWARS_LIST = ":feature:starwarslist"
     const val STARWARS_DETAIL = ":feature:characterdetail"
+    const val FRAGMENT = ":feature:samplefragmentxml"
     const val DOMAIN = ":domain"
     const val DATA = ":data"
     const val COMMON = ":core:common"
