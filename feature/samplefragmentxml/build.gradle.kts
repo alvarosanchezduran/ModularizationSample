@@ -9,6 +9,10 @@ apply<MainGradlePlugin>()
 
 android {
     namespace = "com.alvaro.samplemodularization.feature.samplefragmentxml"
+
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
