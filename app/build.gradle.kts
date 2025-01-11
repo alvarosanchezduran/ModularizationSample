@@ -50,6 +50,26 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+
+    flavorDimensions += "version"
+
+    productFlavors {
+        create("blue") {
+            dimension = "version"
+            applicationIdSuffix = ".blue"
+            versionNameSuffix = "-blue"
+        }
+        create("red") {
+            dimension = "version"
+            applicationIdSuffix = ".red"
+            versionNameSuffix = "-red"
+        }
+        create("green") {
+            dimension = "version"
+            applicationIdSuffix = ".green"
+            versionNameSuffix = "-green"
+        }
+    }
 }
 
 dependencies {
