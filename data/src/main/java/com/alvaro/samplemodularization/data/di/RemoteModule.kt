@@ -1,12 +1,14 @@
 package com.alvaro.samplemodularization.data.di
 
 import com.alvaro.samplemodularization.core.common.BuildConfig
+import com.alvaro.samplemodularization.data.datasource.local.characters.CharactersLocalDataSource
+import com.alvaro.samplemodularization.data.datasource.local.characters.CharactersLocalDataSourceImpl
+import com.alvaro.samplemodularization.data.datasource.local.daos.CharacterDao
 import com.alvaro.samplemodularization.data.datasource.remote.apis.StarWarsApi
 import com.alvaro.samplemodularization.data.datasource.remote.characters.CharactersRemoteDataSource
 import com.alvaro.samplemodularization.data.datasource.remote.characters.CharactersRemoteDataSourceImpl
 import com.alvaro.samplemodularization.data.repository.CharactersRepositoryImpl
 import com.alvaro.samplemodularization.domain.repositories.CharactersRepository
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -62,8 +64,13 @@ object DataSourceModule {
 
     @Singleton
     @Provides
-    fun provideNoteLocalDataSource(api: StarWarsApi): CharactersRemoteDataSource =
+    fun provideCharactersRemoteDataSource(api: StarWarsApi): CharactersRemoteDataSource =
         CharactersRemoteDataSourceImpl(api)
+
+    @Singleton
+    @Provides
+    fun provideCharactersLocalDataSource(dao: CharacterDao): CharactersLocalDataSource =
+        CharactersLocalDataSourceImpl(dao)
 }
 
 @Module
