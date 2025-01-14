@@ -14,13 +14,17 @@ import androidx.compose.ui.Modifier
 fun AppScreen(
     modifier: Modifier = Modifier,
     openCharactersListScreen: () -> Unit,
-    openSampleXmlScreen: (String) -> Unit
+    openSampleXmlScreen: (String) -> Unit,
+    openAuthScreen: () -> Unit,
+    openPlayerScreen: () -> Unit
 ) {
     Scaffold(modifier = modifier) { paddingValues ->
         Surface(modifier = Modifier.padding(paddingValues)) {
             AppContent(
                 openCharactersListScreen,
-                openSampleXmlScreen
+                openSampleXmlScreen,
+                openAuthScreen,
+                openPlayerScreen
             )
         }
     }
@@ -29,7 +33,9 @@ fun AppScreen(
 @Composable
 fun AppContent(
     openCharactersListScreen: () -> Unit,
-    openSampleXmlScreen: (String) -> Unit
+    openSampleXmlScreen: (String) -> Unit,
+    openAuthScreen: () -> Unit,
+    openPlayerScreen: () -> Unit
 ) {
     Column {
         Button(onClick = {
@@ -41,6 +47,16 @@ fun AppContent(
             openSampleXmlScreen("Sample Fragment with PARAM")
         }) {
             Text(text = "Sample XML")
+        }
+        Button(onClick = {
+            openAuthScreen()
+        }) {
+            Text(text = "Sample Supabase Auth")
+        }
+        Button(onClick = {
+            openPlayerScreen()
+        }) {
+            Text(text = "Player")
         }
     }
 

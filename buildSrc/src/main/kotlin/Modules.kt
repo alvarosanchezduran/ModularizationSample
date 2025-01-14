@@ -4,6 +4,8 @@ object Modules {
     const val STARWARS_LIST = ":feature:starwarslist"
     const val STARWARS_DETAIL = ":feature:characterdetail"
     const val FRAGMENT = ":feature:samplefragmentxml"
+    const val AUTH = ":feature:authsupabase"
+    const val PLAYER = ":feature:player"
     const val DOMAIN = ":domain"
     const val DATA = ":data"
     const val COMMON = ":core:common"

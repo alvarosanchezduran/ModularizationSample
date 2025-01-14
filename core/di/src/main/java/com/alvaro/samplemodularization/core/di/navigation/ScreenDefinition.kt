@@ -43,3 +43,15 @@ data class StarWarsCharacterDetailScreenRoute(val id: String) : NavigationRoute 
         const val route = "$root/{$inputArg}"
     }
 }
+
+object AuthScreenRoute : NavigationRoute {
+    override fun buildRoute(): String = ROUTE
+    private const val ROOT = "auth_screen"
+    const val ROUTE = ROOT
+}
+
+object PlayerScreenRoute : NavigationRoute {
+    override fun buildRoute(): String = ROUTE
+    private const val ROOT = "player_screen"
+    const val ROUTE = ROOT
+}

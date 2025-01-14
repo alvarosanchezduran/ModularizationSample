@@ -104,6 +104,8 @@ dependencies {
     implementation(project(Modules.STARWARS_LIST))
     implementation(project(Modules.STARWARS_DETAIL))
     implementation(project(Modules.FRAGMENT))
+    implementation(project(Modules.AUTH))
+    implementation(project(Modules.PLAYER))
     implementation(project(Modules.DOMAIN))
     implementation(project(Modules.DATA))
     implementation(project(Modules.COMMON))
